@@ -1,0 +1,42 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+  }
+  
+  header{
+    color: #333;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.1);
+    height: 4rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .row{
+    display: flex;
+    justify-content: space-between;
+   
+  }
+  
+  .nav-list{
+    
+  }
+  .nav-list--item{
+    margin-right: 1rem;
+  }
+  
+  .nav-list--item:last-child{
+    margin-right: 0;
+   
+  }
+
+
+
+
+
+
+  

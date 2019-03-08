@@ -1,4 +1,4 @@
-package com.wcci.masteryblog.controllers;
+package com.wcci.masteryblog.blog.controllers;
 
 import org.springframework.stereotype.Controller;
 
