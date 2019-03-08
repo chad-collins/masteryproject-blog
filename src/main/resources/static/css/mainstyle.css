@@ -4,6 +4,10 @@
     margin: 0;
     padding: 0;
   }
+
+  .big-margin{
+    margin-top: 6rem;
+  }
   
   header{
     color: #333;
