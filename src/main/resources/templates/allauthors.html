@@ -23,9 +23,9 @@
         <div class="big-margin two-column">
             <section class ="left-column">
             <a href="/post/addpost/">Create a post</a>
-            <article th:each="post : ${posts}">
-                <h2 th:text="${post.postTitle}">post title</h2>
-                <p th:text="${post.postContent}">post content</p>
+            <article th:each="author : ${authors}">
+                <h2 th:text="${author.firstName}">firstname</h2>
+                <p th:text="${author.lastName}">lastname</p>
             </article>
             </section>
 
