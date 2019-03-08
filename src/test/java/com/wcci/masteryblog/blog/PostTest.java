@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.wcci.masteryblog.blog.models.Post;
+import com.wcci.masteryblog.blog.repositories.PostsRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
@@ -21,7 +22,7 @@ public class PostTest {
 	private TestEntityManager entityManager;
 	
 	@Resource
-	PostRepository postRepo;
+	PostsRepository postRepo;
 	
 	
 	@Test
