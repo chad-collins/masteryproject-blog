@@ -18,7 +18,6 @@ public class Post {
 	public Post() {}
 
 	public Post(String postTitle, String postContent) {
-		this.id = id;
 		this.postTitle = postTitle;
 		this.postContent =postContent;
 	}
