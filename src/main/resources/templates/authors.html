@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/css/mainstyle.css">
+    <title>Document</title>
+</head>
+<header class="row">
+    <h1>LOGO</h1>
+    <nav>
+        <ul class="row nav-list">
+                <li class="nav-list--item"><a href="/">HOME</a></li>
+                <li class="nav-list--item"><a href="/genres">GENRES</a>
+                <li class="nav-list--item"><a href="/authors">AUTHORS</a>
+        </ul>
+</header>
+
+<body>
+    <main>
+        <div class="big-margin two-column">
+            <section class ="left-column">
+                    <section class ="left-column">
+                
+
+                            <form action="/authors/addauthor" method="POST">
+                                <ul class="form-list">
+                                  <div class="margin-bottom">
+                                    <li class="form-list--item">
+                                      <p>ARTICLE TITLE</p>
+                                    </li>
+                                    <li class="form-list--item"><input class="form-input" type="text" placeholder="ex: first name"
+                                        name="firstName">
+                                    </li>
+                                    <li class="form-list--item"><input class="form-input" type="text" placeholder="ex: last name"
+                                        name="lastName">
+                                    </li>
+                                    <li class="form-list--item"> <button type="submit">Submit</button></li>
+                                  </div>
+                                
+                    </section>
+
+            <article th:each="author : ${authors}">
+                <h2 th:text="${author.firstName}">firstname</h2>
+                <p th:text="${author.lastName}">lastname</p>
+            </article>
+            </section>
+
+            <section>
+                    <h2>col2</h2>
+                </section>
+        </div>
+
+    </main>
+</body>
+
+</html>
