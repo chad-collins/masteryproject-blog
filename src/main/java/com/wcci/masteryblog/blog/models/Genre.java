@@ -1,8 +1,11 @@
 package com.wcci.masteryblog.blog.models;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Genre {
@@ -11,6 +14,8 @@ public class Genre {
 	@GeneratedValue
 	private Long id;
 	private String genreName;
+	@OneToMany (mappedBy= "genre")
+	private Collection<Post> posts;
 	
 	public Genre() {}
 	
@@ -24,6 +29,10 @@ public class Genre {
 	}
 	public String getGenreName() {
 		return genreName;
+	}
+
+	public Collection<Post> getPosts() {
+		return posts;
 	}
 
 	@Override
