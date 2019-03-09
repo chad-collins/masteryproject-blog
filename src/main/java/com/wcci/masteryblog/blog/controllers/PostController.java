@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.wcci.masteryblog.blog.models.Author;
+import com.wcci.masteryblog.blog.models.Genre;
 import com.wcci.masteryblog.blog.models.Post;
+import com.wcci.masteryblog.blog.repositories.AuthorsRepository;
+import com.wcci.masteryblog.blog.repositories.GenreRepository;
 import com.wcci.masteryblog.blog.repositories.PostsRepository;
 
 
@@ -18,6 +23,10 @@ public class PostController {
 
 	@Resource
 	PostsRepository postsRepo;
+	@Resource
+	AuthorsRepository authorsRepo;
+	@Resource
+	GenreRepository genreRepo;
 	
 	@GetMapping("/addpost")
 	public String addPost(Model model) {
@@ -26,10 +35,11 @@ public class PostController {
 	}
 	
 	@PostMapping("/addpost")
-	public String addPost(Model model, String postTitle, String postContent) {
+	public String addPost(Model model, String postTitle, String lastName, String genreName, String postContent) {
 	model.addAttribute(postsRepo.findAll());
-	Post postToAdd = new Post(postTitle, postContent);
-	postsRepo.save(postToAdd);
+	Author author = authorsRepo.findByLastName(lastName);
+	Genre genre = genreRepo.findByGenreName(genreName);
+	postsRepo.save(new Post(postTitle, author, genre, postContent));
 	return"/addpost";
 	}
 	

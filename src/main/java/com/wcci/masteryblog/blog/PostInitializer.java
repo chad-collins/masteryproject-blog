@@ -6,8 +6,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 import com.wcci.masteryblog.blog.models.Author;
+import com.wcci.masteryblog.blog.models.Genre;
 import com.wcci.masteryblog.blog.models.Post;
 import com.wcci.masteryblog.blog.repositories.AuthorsRepository;
+import com.wcci.masteryblog.blog.repositories.GenreRepository;
 import com.wcci.masteryblog.blog.repositories.PostsRepository;
 
 @Service
@@ -18,18 +20,25 @@ public class PostInitializer implements CommandLineRunner {
 	PostsRepository postsRepo;
 	@Resource
 	AuthorsRepository authorsRepo;
+	@Resource
+	GenreRepository genreRepo;
 	
 	
 	@Override
 	public void run(String... args) throws Exception {
 		
 		//AUTHOR INITIALIZER//
-		authorsRepo.save(new Author("Chad", "Collins"));
-		authorsRepo.save(new Author("Nick", "Miner"));
+		Author author1 = authorsRepo.save(new Author("Chad", "Collins"));
+		Author author2 = authorsRepo.save(new Author("Nick", "Miner"));
+		
+		//GENRE INITIALIZER//
+		Genre genre1 = genreRepo.save(new Genre("Tech"));
+		Genre genre2 = genreRepo.save(new Genre("Other"));
+
 	
 		
 		//POST INITIALIZER//
-		postsRepo.save(new Post("This is our first post", "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec venenatis nibh. Phasellus porta iaculis metus. Suspendisse potenti. Etiam suscipit aliquam mauris, a aliquet erat lobortis vitae. Sed consectetur, nisi quis iaculis luctus, nisi nibh ornare augue, et dapibus arcu massa at orci. Nullam a eros sit amet lacus luctus laoreet. Nam id ipsum est. Maecenas aliquam viverra tortor. Ut a turpis eu enim lacinia mattis ut sed mi. In quis scelerisque felis. Pellentesque tincidunt neque tincidunt, porttitor risus viverra, convallis tellus. Nullam fermentum et massa dignissim mattis. Praesent a nulla lectus.</p>\n" + 
+		postsRepo.save(new Post("This is our first post", author1, genre1, "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec venenatis nibh. Phasellus porta iaculis metus. Suspendisse potenti. Etiam suscipit aliquam mauris, a aliquet erat lobortis vitae. Sed consectetur, nisi quis iaculis luctus, nisi nibh ornare augue, et dapibus arcu massa at orci. Nullam a eros sit amet lacus luctus laoreet. Nam id ipsum est. Maecenas aliquam viverra tortor. Ut a turpis eu enim lacinia mattis ut sed mi. In quis scelerisque felis. Pellentesque tincidunt neque tincidunt, porttitor risus viverra, convallis tellus. Nullam fermentum et massa dignissim mattis. Praesent a nulla lectus.</p>\n" + 
 				"\n" + 
 				"<p>Nulla lobortis at nunc id aliquam. Quisque ut tempor turpis. Etiam malesuada orci venenatis ligula sodales, id vehicula erat efficitur. Praesent elementum a eros non consequat. Nunc volutpat faucibus nibh et congue. Aenean tristique sapien nisi, nec suscipit risus pharetra egestas. Integer commodo sit amet est vitae dignissim. Morbi ligula orci, sodales at ornare sit amet, porttitor quis enim. Quisque eros metus, iaculis vitae sagittis vel, laoreet non justo. Suspendisse et venenatis dui. Morbi euismod, elit et accumsan luctus, dui arcu efficitur nisi, sed ornare eros quam sed arcu. Vivamus nibh nisl, malesuada vel aliquam a, ultrices venenatis lorem. Nulla lobortis felis ac turpis finibus commodo. Vivamus elementum sapien a mauris pulvinar aliquet.</p>\n" + 
 				"\n" + 
@@ -46,7 +55,7 @@ public class PostInitializer implements CommandLineRunner {
 	
 
 
-		postsRepo.save(new Post("This is our second post", "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec venenatis nibh. Phasellus porta iaculis metus. Suspendisse potenti. Etiam suscipit aliquam mauris, a aliquet erat lobortis vitae. Sed consectetur, nisi quis iaculis luctus, nisi nibh ornare augue, et dapibus arcu massa at orci. Nullam a eros sit amet lacus luctus laoreet. Nam id ipsum est. Maecenas aliquam viverra tortor. Ut a turpis eu enim lacinia mattis ut sed mi. In quis scelerisque felis. Pellentesque tincidunt neque tincidunt, porttitor risus viverra, convallis tellus. Nullam fermentum et massa dignissim mattis. Praesent a nulla lectus.</p>\n" + 
+		postsRepo.save(new Post("This is our second post", author2, genre2, "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec venenatis nibh. Phasellus porta iaculis metus. Suspendisse potenti. Etiam suscipit aliquam mauris, a aliquet erat lobortis vitae. Sed consectetur, nisi quis iaculis luctus, nisi nibh ornare augue, et dapibus arcu massa at orci. Nullam a eros sit amet lacus luctus laoreet. Nam id ipsum est. Maecenas aliquam viverra tortor. Ut a turpis eu enim lacinia mattis ut sed mi. In quis scelerisque felis. Pellentesque tincidunt neque tincidunt, porttitor risus viverra, convallis tellus. Nullam fermentum et massa dignissim mattis. Praesent a nulla lectus.</p>\n" + 
 				"\n" + 
 				"<p>Nulla lobortis at nunc id aliquam. Quisque ut tempor turpis. Etiam malesuada orci venenatis ligula sodales, id vehicula erat efficitur. Praesent elementum a eros non consequat. Nunc volutpat faucibus nibh et congue. Aenean tristique sapien nisi, nec suscipit risus pharetra egestas. Integer commodo sit amet est vitae dignissim. Morbi ligula orci, sodales at ornare sit amet, porttitor quis enim. Quisque eros metus, iaculis vitae sagittis vel, laoreet non justo. Suspendisse et venenatis dui. Morbi euismod, elit et accumsan luctus, dui arcu efficitur nisi, sed ornare eros quam sed arcu. Vivamus nibh nisl, malesuada vel aliquam a, ultrices venenatis lorem. Nulla lobortis felis ac turpis finibus commodo. Vivamus elementum sapien a mauris pulvinar aliquet.</p>\n" + 
 				"\n" + 

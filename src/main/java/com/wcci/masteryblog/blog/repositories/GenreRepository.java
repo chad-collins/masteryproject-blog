@@ -6,4 +6,6 @@ import com.wcci.masteryblog.blog.models.Genre;
 
 public interface GenreRepository extends CrudRepository<Genre, Long> {
 
+	Genre findByGenreName(String genreName);
+
 }

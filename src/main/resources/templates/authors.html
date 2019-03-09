@@ -41,8 +41,8 @@
                 </div>
 
         <article class="maincontent-box" th:each="author : ${authors}">
-            <h2 th:text="${author.firstName}"></h2>
-            <p th:text="${author.lastName}"></p>
+            <a th:href="@{|/authors/${author.id}|}"><h2 th:text="|${author.firstName} ${author.lastName}|"></h2></a>
+
         </article>
 
         </section>
