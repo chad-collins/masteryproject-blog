@@ -8,4 +8,6 @@ import com.wcci.masteryblog.blog.models.Author;
 @Repository
 public interface AuthorsRepository extends CrudRepository<Author, Long>{
 
+	Author findByFirstNameAndLastName(String firstName, String lastName);
+
 }

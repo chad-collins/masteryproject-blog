@@ -1,11 +1,14 @@
 package com.wcci.masteryblog.blog.models;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
+
 
 @Entity
 public class Author {
@@ -23,9 +26,10 @@ public class Author {
 	
 	public Author() {}
 	
-	public Author(String firstName, String lastName) {
+	public Author(String firstName, String lastName, Post ...posts) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.posts = Arrays.asList(posts);
 	}
 
 	public String getFirstName() {
@@ -44,9 +48,21 @@ public class Author {
 		return posts;
 	}
 
-	public void setPosts(Collection<Post> posts) {
-		this.posts = posts;
+
+	public void addPostToAuthorsPosts(Post post) {
+		posts.add(post);	
 	}
+
+	public int getPostsLength() {
+		int postsLength = posts.size();
+		return postsLength;
+	}
+	
+	@Override
+	public String toString() {
+		return "Author [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", posts=" + posts + "]";
+	}
+	
 	
 	
 	

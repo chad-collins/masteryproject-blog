@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 
+
 @Entity
 public class Post {
 
@@ -17,13 +18,10 @@ public class Post {
 	private String postTitle;
 	@Lob
 	private String postContent;
-	@ManyToMany
+	
+	@ManyToMany(mappedBy="posts")
 	private Collection <Author> authors;
 	
-
-	public void setAuthors(Collection<Author> authors) {
-		this.authors = authors;
-	}
 
 	public Post() {}
 
@@ -50,11 +48,17 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", postTitle=" + postTitle + ", postContent=" + postContent + "]";
+		return "Post [id=" + id + ", postTitle=" + postTitle + ", postContent=" + postContent + ", authors=" + authors
+				+ "]";
 	}
 	
 	public Collection<Author> getAuthors() {
 		return authors;
+	}
+
+	public void addAuthorToPostsAuthors(Author author) {
+		authors.add(author);
+		
 	}
 
 	
