@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.wcci.masteryblog.blog.models.Post;
@@ -31,5 +32,12 @@ public class PostController {
 	postsRepo.save(postToAdd);
 	return"/addpost";
 	}
+	
+	@GetMapping("/{id}")
+	public String addPost(@PathVariable Long id, Model model) {
+	model.addAttribute("post", postsRepo.findById(id).get());
+	return"singlepost";
+	}
+
 		
 }
