@@ -1,0 +1,24 @@
+
+
+input, .form-textarea[type=text]{
+    border: 1px;
+    box-shadow: 0 0px 3px rgba(0,0,0, 0.5),0 1px 0 rgba(0,0,0,.01);
+    font-size: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+
+
+  .form-textarea {
+    box-sizing: border-box;
+    height: 600px;
+    
+    
+  }
+
+  .form-input--small{
+    max-width: 150px;
+  }

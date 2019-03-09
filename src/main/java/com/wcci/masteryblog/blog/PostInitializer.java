@@ -27,7 +27,8 @@ public class PostInitializer implements CommandLineRunner {
 		postsRepo.save(new Post("This is a post tile", "This is a post yada yada"));
 		
 		//AUTHOR INITIALIZER//
-		authorsRepo.save(new Author("firstname", "lastname"));
+		authorsRepo.save(new Author("Chad", "Collins"));
+		authorsRepo.save(new Author("Nick", "Miner"));
 	}
 	
 }

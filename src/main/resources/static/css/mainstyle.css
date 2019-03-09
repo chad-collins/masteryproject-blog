@@ -1,46 +1,187 @@
 
+/*------------------------------------------------------------------
+[Table of contents]
+#. Style Guide
+1. Universal Styles
+2. Header / branding, #navbar
+3. Body / Box Content
+4. Buttons
+5. Footer
+-------------------------------------------------------------------
+# [Style Guide]
 
+  # [Fonts]
+
+    # [Body Font]
+      # font-family: proxima-nova, sans-serif;
+      # font-style: normal;
+      # font-weight: 400;
+    #
+  #
+
+  # [Color codes]
+  # Black (Font, Borders, Button BGs) #000;
+  # White (Body BG, Button-Font) #fff; 
+#
+-------------------------------------------------------------------*/
+
+
+/*-----------------
+1. UNIVERSAL STYLES
+-----------------*/
 *{
-    margin: 0;
-    padding: 0;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a{
+text-decoration: none;
+ color: #000;
+
+}
+
+ul{
+  list-style: none;
+}
+
+.row{
+  display: flex;
+}
+
+/*-----------------
+2. Header
+-----------------*/
+
+header{
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0, 0.1);
+  color: #333;
+  margin-bottom: 3rem;
+  top: 0;
+  width: 100%;
+}
+
+
+.branding{
+  align-items: center;
+  height: 10rem;
+  justify-content: center;     
+}
+
+.branding h1{
+  font-size: 5rem;
+}
+
+nav{
+  align-items: center;
+  height: 3rem;
+  justify-content: center;
+}
+
+.nav-list{ 
+  justify-content: center;
+}
+
+.nav-list--item{
+  margin-right: 5rem;
+}
+
+.nav-list--item:last-child{
+  margin-right: 0;
+}
+
+
+
+/*-------------------
+3. Body / Box Content
+-------------------*/
+
+.box{
+  margin-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.article-header{
+  font-size:2.2rem;
+}
+.article-list li{
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}
+
+.article-summary{
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.article-genre{
+  margin-bottom: 1rem;
+}
+
+/* Larger display view is a 2 column grid with main content and a sidebar*/
+@media(min-width: 751px){
+  .two-column{
+    display: grid;
+    grid-column-gap: 5rem;
+    grid-template-columns: 3fr 1fr;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    max-width: 1200px;
   }
 
-  .big-margin{
-    margin-top: 6rem;
+  .sidebar{
+    box-shadow: 0 0px 3px rgba(0,0,0, 0.2),0 1px 0 rgba(0,0,0,.01);
+    margin-right: 3rem;
+    padding: 1rem;
   }
   
-  header{
-    color: #333;
-    background-color: #fff;
-    box-shadow: 0 1px 1px rgba(0,0,0, 0.1);
-    height: 4rem;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
+  .maincontent-box{
+    margin-bottom: 3rem;
+    margin-left: 3rem;
+    max-width: 750px;
+  } 
+
+}
+
+/* Smaller display view is a abandons grid view and sidebar*/
+@media(max-width: 750px){
+  .sidebar{
+  display: none;
   }
-  
-  .row{
-    display: flex;
-    justify-content: space-between;
-   
-  }
-  
-  .nav-list{
-    
-  }
-  .nav-list--item{
+  .maincontent-box{   
+    margin-left: 1rem;
     margin-right: 1rem;
+    margin-bottom: 3rem;
   }
-  
-  .nav-list--item:last-child{
-    margin-right: 0;
-   
-  }
+}
+
+/*-----------------
+4. Buttons
+-----------------*/
+
+.square-button {
+  background-color: #000;;
+  border: 1px #fff;
+  color: #fff;
+  height:40px;
+  width:100px;
+  cursor:pointer;
+}
+
+.square-button:hover {
+   background-color: #444;
+   color:white;
+}
+
+/*-----------------
+5. Footer
+-----------------*/
 
 
 
 
 
 
-  
+
