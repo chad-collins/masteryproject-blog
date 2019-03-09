@@ -22,7 +22,7 @@ public class AuthorController {
 	
 	@GetMapping("")
 	public String viewAllAuthors(Model model) {
-	model.addAttribute(authorsRepo.findAll());
+	model.addAttribute("authors", authorsRepo.findAll());
 	return"authors";
 	}
 	
