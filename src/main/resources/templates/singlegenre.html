@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="/css/mainstyle.css">
-    <link rel="stylesheet" type="text/css" href="/css/formstyle.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <title>Document</title>
 </head>
@@ -29,20 +28,15 @@
 
     <main>
         <!--Main is divided into 2 sections. A large area for main content, with a sidebar on the right-->
+
         <div class="two-column">
             <section id="articles" class="two-column-left">
-                <div class="maincontent-box">
-                    <p>Add a new genre:</p>
-                    <form class="box" action="/genres/addgenre" method="POST">
-                        <input class="form-input--small" type="text" placeholder="Mobile" name="genreName">
-                        <button class="square-button" type="submit">Submit</button>
-                    </form>
-                </div>
 
-                <article class="maincontent-box" th:each="genre : ${genres}">
-                    <a th:href="@{|/genres/${genre.id}|}"><h2 th:text="${genre.genreName}"></h2></a>
+                <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
+                <article class="maincontent-box">
+                    <h2 class="article-header" th:text="${genre.genreName}"></h2>
+                    
                 </article>
-
             </section>
             <!--end area for main content-->
 
@@ -57,6 +51,7 @@
                         <li>tag</li>
                     </ul>
                 </div>
+
             </section>
         </div>
     </main>

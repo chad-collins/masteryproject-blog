@@ -6,6 +6,7 @@ import javax.annotation.Resources;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -32,5 +33,10 @@ public class GenreController {
 	genreRepo.save(genreToAdd);
 	return"redirect:/genres";
 	}
-
+	
+	@GetMapping("/{id}")
+	public String viewGenre(@PathVariable Long id, Model model) {
+	model.addAttribute("genre", genreRepo.findById(id).get());
+	return"singlegenre";
+	}
 }

@@ -34,7 +34,7 @@ public class PostController {
 	}
 	
 	@GetMapping("/{id}")
-	public String addPost(@PathVariable Long id, Model model) {
+	public String viewPost(@PathVariable Long id, Model model) {
 	model.addAttribute("post", postsRepo.findById(id).get());
 	return"singlepost";
 	}
