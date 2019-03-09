@@ -6,34 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="/css/mainstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <title>Document</title>
 </head>
-<header class="row">
-    <h1>LOGO</h1>
-    <nav>
-        <ul class="row nav-list">
-                <li class="nav-list--item"><a href="/">HOME</a></li>
-                <li class="nav-list--item"><a href="/genres">GENRES</a>
-                <li class="nav-list--item"><a href="/authors">AUTHORS</a>
-        </ul>
-</header>
 
 <body>
-    <main>
-        <div class="big-margin two-column">
-            <section class ="left-column">
-            <a href="/post/addpost/">Create a post</a>
-            <article th:each="post : ${posts}">
-                <h2 th:text="${post.postTitle}">post title</h2>
-                <p th:text="${post.postContent}">post content</p>
-            </article>
-            </section>
 
-            <section>
-                    <h2>col2</h2>
-                </section>
+    <!--Header is divided into 2 sections. A large branding area above a navbar-->
+    <header>
+        <div class="row branding">
+            <h1>LOGO</h1>
         </div>
+        <nav id="navbar">
+            <ul class="row nav-list">
+                <li class="nav-list--item"><a href="/">HOME</a></li>
+                <li class="nav-list--item"><a href="/genres">GENRES</a></li>
+                <li class="nav-list--item"><a href="/authors">AUTHORS</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        <!--Main is divided into 2 sections. A large area for main content, with a sidebar on the right-->
+
+        <div class="two-column">
+            <section id="articles" class="two-column-left">
+
+                <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
+                <div class="maincontent-box">
+                    <a href="/post/addpost"><button class="square-button">Add a post</button></a>
+                </div>
+                <article class="maincontent-box" th:each="post : ${posts}">
+                    <h2 class="article-header" th:text="${post.postTitle}"></h2>
+                    <ul class="row article-list">
+                        <li>by: Article Author</li>
+                        <li>published: Article Date</li>
+                    </ul>
+                    <p class="article-summary">Article Summary Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Proin feugiat, massa nec ultrices porttitor, metus tellus euismod magna, eu porttitor ex ipsum
+                        eget diam. Pellentesque posuere rutrum lectus, vitae suscipit purus placerat quis.</p>
+                    <p class="article-genre">Filed under: Genre</p>
+                    <button class="square-button">Read More</button>
+                </article>
+            </section>
+            <!--end area for main content-->
+
+            <section class="two-column-right">
+                <div class="sidebar">
+                    <h2>Tags</h2>
+                    <ul>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                    </ul>
+                </div>
+
+            </section>
+        </div>
     </main>
 </body>
 

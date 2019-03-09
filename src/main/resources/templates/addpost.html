@@ -1,50 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="/css/mainstyle.css">
+  <link rel="stylesheet" type="text/css" href="/css/formstyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <title>Document</title>
 </head>
 
-<header class="row">
-        <h1>LOGO</h1>
-        <nav>
-            <ul class="row nav-list">
-                    <li class="nav-list--item"><a href="/">HOME</a></li>
-                    <li class="nav-list--item"><a href="/genres">GENRES</a>
-                    <li class="nav-list--item"><a href="/authors">AUTHORS</a>
-            </ul>
-</header>
-
 <body>
-        <div class="big-margin two-column">
-                <section class ="left-column">
-                
 
-                        <form action="/post/addpost" method="POST">
-                            <ul class="form-list">
-                              <div class="margin-bottom">
-                                <li class="form-list--item">
-                                  <p>ARTICLE TITLE</p>
-                                </li>
-                                <li class="form-list--item"><input class="form-input" type="text" placeholder="ex: Name Your Post"
-                                    name="postTitle">
-                                </li>
-                                <li class="form-list--item"><input class="form-input" type="text" placeholder="ex: Greenskeeper"
-                                    name="postContent">
-                                </li>
-                                <li class="form-list--item"> <button type="submit">Submit</button></li>
-                              </div>
-                              
+  <!--Header is divided into 2 sections. A large branding area above a navbar-->
+  <header>
+    <div class="row branding">
+      <h1>LOGO</h1>
+    </div>
+    <nav id="navbar">
+      <ul class="row nav-list">
+        <li class="nav-list--item"><a href="/">HOME</a></li>
+        <li class="nav-list--item"><a href="/genres">GENRES</a></li>
+        <li class="nav-list--item"><a href="/authors">AUTHORS</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main>
+    <!--Main is divided into 2 sections. A large area for main content, with a sidebar on the right-->
+    <div class="two-column">
+      <section id="articles" class="two-column-left">
 
+        <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
+        <form class="maincontent-box" action="/post/addpost" method="POST">
 
-                
-                </section>
-    
-                <section>
-                        <h2>col2</h2>
-                    </section>
+          <input class="form-input" type="text" placeholder="Title of your post." name="postTitle">
+
+          <input class="form-textarea" type="textarea" placeholder="Your article here..." name="postContent">
+
+          <button class="square-button" type="submit">Submit</button>
+
+        </form>
+      </section>
+      <!--end area for main content-->
+
+      <section class="two-column-right">
+        <div class="sidebar">
+          <h2>Tags</h2>
+          <ul>
+            <li>tag</li>
+            <li>tag</li>
+            <li>tag</li>
+            <li>tag</li>
+            <li>tag</li>
+          </ul>
+        </div>
+
+      </section>
+    </div>
+  </main>
 </body>
+
 </html>
