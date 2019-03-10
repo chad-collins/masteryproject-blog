@@ -20,7 +20,6 @@ public class Genre {
 	public Genre() {}
 	
 	public Genre(String genreName) {
-		this.id = id;
 		this.genreName = genreName;
 	}
 	
@@ -34,9 +33,16 @@ public class Genre {
 	public Collection<Post> getPosts() {
 		return posts;
 	}
+	
 
 	@Override
 	public String toString() {
 		return "Genre [id=" + id + ", genreName=" + genreName + "]";
 	}
+
+/*	public void addPostToGenrePosts(Post postToSave) {
+		posts.add(postToSave);
+		// TODO Auto-generated method stub
+		
+	}*/
 }
