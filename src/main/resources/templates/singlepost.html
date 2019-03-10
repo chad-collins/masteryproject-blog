@@ -32,7 +32,16 @@
 
         <div class="two-column">
             <section id="articles" class="two-column-left">
-
+                
+                <form class ="box" th:action="|/posts/${post.id}|" method="POST">
+                    <div th:object="${author}">
+                            <select name="lastName">
+                                <option value="0">Add an additional contributing author</option>
+                                <option th:each="author : ${authors}" th:value="${author.lastName}" th:text="|${author.firstName} ${author.lastName}|">
+                                Author</option>
+                            </select>
+                    <button class="square-button" type="submit">Submit</button>
+                </form>
                 <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
                 <article class="maincontent-box">
                     <p>Post</p>
