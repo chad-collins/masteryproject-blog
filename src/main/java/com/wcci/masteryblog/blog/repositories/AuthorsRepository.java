@@ -10,4 +10,6 @@ public interface AuthorsRepository extends CrudRepository<Author, Long>{
 
 	Author findByLastName(String lastName);
 
+	Author findByFirstNameAndLastName(String firstName, String lastName);
+
 }
