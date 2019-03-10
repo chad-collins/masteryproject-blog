@@ -24,6 +24,8 @@ public class Post {
 	private String postContent;
 	@ManyToMany
 	private Collection <Author> authors;
+	@ManyToMany
+	private Collection <Octothorp> octos;
 	@ManyToOne
 	private Genre genre;
 	

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/css/mainstyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/formstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!--Header is divided into 2 sections. A large branding area above a navbar-->
+    <header>
+        <div class="row branding">
+            <h1>LOGO</h1>
+        </div>
+        <nav id="navbar">
+            <ul class="row nav-list">
+                <li class="nav-list--item"><a href="/">HOME</a></li>
+                <li class="nav-list--item"><a href="/genres">GENRES</a></li>
+                <li class="nav-list--item"><a href="/authors">AUTHORS</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!--Main is divided into 2 sections. A large area for main content, with a sidebar on the right-->
+        <div class="two-column">
+            <section id="articles" class="two-column-left">
+                <div class="maincontent-box">
+                    <p>Add a new genre:</p>
+                    <form class="box" action="/genres/addgenre" method="POST">
+                        <input class="form-input--small" type="text" placeholder="Mobile" name="genreName">
+                        <button class="square-button" type="submit">Submit</button>
+                    </form>
+                </div>
+
+                <article class="maincontent-box" th:each="genre : ${genres}">
+                    <a th:href="@{|/genres/${genre.id}|}"><h2 th:text="${genre.genreName}"></h2></a>
+                </article>
+
+            </section>
+            <!--end area for main content-->
+
+            <section class="two-column-right">
+                <div class="sidebar">
+                    <h2>Tags</h2>
+                    <ul>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
