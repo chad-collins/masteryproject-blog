@@ -56,8 +56,18 @@ public class PostController {
 	@GetMapping("/{id}")
 	public String viewPost(@PathVariable Long id, Model model) {
 	model.addAttribute("post", postsRepo.findById(id).get());
+	model.addAttribute("authors", authorsRepo.findAll());
 	return"singlepost";
 	}
-
+	
+	@PostMapping("/{id}")
+	public String addAdditionalAuthor(@PathVariable Long id, String lastName) {
+		Post postToAddTo = postsRepo.findById(id).get();
+		Author authorToFind = authorsRepo.findByLastName(lastName);
+		if(!postToAddTo.getAuthors().contains(authorToFind)) {
+			postToAddTo.addAuthorToPostAuthors(authorToFind);
+			postsRepo.save(postToAddTo);}
+		return"redirect:/posts/" +id;
+	}
 		
 }

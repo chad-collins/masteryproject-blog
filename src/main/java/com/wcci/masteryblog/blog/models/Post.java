@@ -91,4 +91,9 @@ public class Post {
 				+ ", authors=" + getAuthorNames() + ", genre=" + genre + "]";
 	}
 
+	public void addAuthorToPostAuthors(Author authorToFind) {
+		authors.add(authorToFind);
+		
+	}
+
 }
