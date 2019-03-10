@@ -34,9 +34,6 @@
             <section id="articles" class="two-column-left">
 
                 <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
-                <div class="maincontent-box">
-                    <a href="/posts/addpost"><button class="square-button">Add a post</button></a>
-                </div>
                 <div class="column-reverse">
                     <article class="maincontent-box" th:each="post : ${posts}">
                         <h2 class="article-header" th:text="${post.postTitle}"></h2>
