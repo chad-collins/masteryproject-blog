@@ -33,32 +33,31 @@
             <section id="articles" class="two-column-left">
                 <div class="maincontent-box">
                     <p>Add a new genre:</p>
-                    <form class ="box" action="/genres/addgenre" method="POST">
+                    <form class="box" action="/genres/addgenre" method="POST">
                         <input class="form-input--small" type="text" placeholder="Mobile" name="genreName">
                         <button class="square-button" type="submit">Submit</button>
                     </form>
                 </div>
 
-        <article class="maincontent-box" th:each="genre : ${genres}">
-            <h2 th:text="${genre.genreName}"></h2>
-        </article>
+                <article class="maincontent-box" th:each="genre : ${genres}">
+                    <a th:href="@{|/genres/${genre.id}|}"><h2 th:text="${genre.genreName}"></h2></a>
+                </article>
 
-        </section>
-        <!--end area for main content-->
+            </section>
+            <!--end area for main content-->
 
-        <section class="two-column-right">
-            <div class="sidebar">
-                <h2>Tags</h2>
-                <ul>
-                    <li>tag</li>
-                    <li>tag</li>
-                    <li>tag</li>
-                    <li>tag</li>
-                    <li>tag</li>
-                </ul>
-            </div>
-
-        </section>
+            <section class="two-column-right">
+                <div class="sidebar">
+                    <h2>Tags</h2>
+                    <ul>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                    </ul>
+                </div>
+            </section>
         </div>
     </main>
 </body>
