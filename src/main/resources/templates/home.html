@@ -20,6 +20,7 @@
         <nav id="navbar">
             <ul class="row nav-list">
                 <li class="nav-list--item"><a href="/">HOME</a></li>
+                <li class="nav-list--item"><a href="/posts/allposts">ALL POSTS</a></li>
                 <li class="nav-list--item"><a href="/genres">GENRES</a></li>
                 <li class="nav-list--item"><a href="/authors">AUTHORS</a></li>
             </ul>
@@ -42,8 +43,8 @@
                         <ul class="row article-list">
                             <li th:each="author :${post.authors}"><a th:href="@{|/authors/${author.id}|}"
                                     th:text="|${author.firstName} ${author.lastName}|"></a></li>
-                            <li><a th:href="@{|/genres/${post.genre.id}|}"
-                                    th:text="|${post.genre.genreName}|">Genre Link</a></li>
+                            <li><a th:href="@{|/genres/${post.genre.id}|}" th:text="|${post.genre.genreName}|">Genre
+                                    Link</a></li>
                             <li th:text="|published: ${post.date}|">Default Date></li>
 
 
