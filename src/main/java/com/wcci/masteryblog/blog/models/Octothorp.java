@@ -14,13 +14,12 @@ public class Octothorp {
 	@GeneratedValue
 	private Long id;
 	private String tagName;
-	@ManyToMany (mappedBy= "octos")
+	@ManyToMany(mappedBy= "octos")
 	private Collection<Post> posts;
 	
 	public Octothorp() {}
 		
 	public Octothorp(String tagName) {
-		this.id = id;
 		this.tagName = tagName;
 	}
 	

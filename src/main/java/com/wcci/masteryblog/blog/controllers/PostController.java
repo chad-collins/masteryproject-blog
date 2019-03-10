@@ -11,14 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wcci.masteryblog.blog.models.Author;
 import com.wcci.masteryblog.blog.models.Genre;
+import com.wcci.masteryblog.blog.models.Octothorp;
 import com.wcci.masteryblog.blog.models.Post;
 import com.wcci.masteryblog.blog.repositories.AuthorsRepository;
 import com.wcci.masteryblog.blog.repositories.GenreRepository;
+import com.wcci.masteryblog.blog.repositories.OctoRepository;
 import com.wcci.masteryblog.blog.repositories.PostsRepository;
 
 
 @Controller
-@RequestMapping("/post")
+@RequestMapping("/posts")
 public class PostController {
 
 	@Resource
@@ -27,27 +29,53 @@ public class PostController {
 	AuthorsRepository authorsRepo;
 	@Resource
 	GenreRepository genreRepo;
+	@Resource
+	OctoRepository octoRepo;
+	
+	@GetMapping("")
+	public String home(Model model) {
+		model.addAttribute("posts", postsRepo.findAll());
+		model.addAttribute("octothorps", octoRepo.findAll());
+		return "posts";
+		
+	}
 	
 	@GetMapping("/addpost")
 	public String addPost(Model model) {
 	model.addAttribute(postsRepo.findAll());
+	model.addAttribute("authors", authorsRepo.findAll());
+	model.addAttribute("genres", genreRepo.findAll());
+	model.addAttribute("octothorps", octoRepo.findAll());
 	return"/addpost";
 	}
 	
 	@PostMapping("/addpost")
-	public String addPost(Model model, String postTitle, String lastName, String genreName, String postContent) {
-	model.addAttribute(postsRepo.findAll());
-	Author author = authorsRepo.findByLastName(lastName);
+	public String addPost(String lastName, String genreName, String tagName, String postTitle, String postContent) {
 	Genre genre = genreRepo.findByGenreName(genreName);
-	postsRepo.save(new Post(postTitle, author, genre, postContent));
-	return"/addpost";
+	Author author = authorsRepo.findByLastName(lastName);
+	Octothorp tag = octoRepo.findByTagName(tagName);
+	postsRepo.save(new Post(postTitle, author, genre, postContent, tag));
+		return"redirect:/";
 	}
+	
+	
 	
 	@GetMapping("/{id}")
 	public String viewPost(@PathVariable Long id, Model model) {
 	model.addAttribute("post", postsRepo.findById(id).get());
+	model.addAttribute("authors", authorsRepo.findAll());
+	model.addAttribute("octothorps", octoRepo.findAll());
 	return"singlepost";
 	}
-
+	
+	@PostMapping("/{id}")
+	public String addAdditionalAuthor(@PathVariable Long id, String lastName) {
+		Post postToAddTo = postsRepo.findById(id).get();
+		Author authorToFind = authorsRepo.findByLastName(lastName);
+		if(!postToAddTo.getAuthors().contains(authorToFind)) {
+			postToAddTo.addAuthorToPostAuthors(authorToFind);
+			postsRepo.save(postToAddTo);}
+		return"redirect:/posts/" +id;
+	}
 		
 }
