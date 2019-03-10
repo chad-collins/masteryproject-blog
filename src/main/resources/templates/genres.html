@@ -38,9 +38,11 @@
                         <button class="square-button" type="submit">Submit</button>
                     </form>
                 </div>
-
-                <article class="maincontent-box" th:each="genre : ${genres}">
-                    <a th:href="@{|/genres/${genre.id}|}"><h2 th:text="${genre.genreName}"></h2></a>
+                
+                <article class="maincontent-box">
+                    <div class="grid-table">
+                        <a class="grid-table--item article-header" th:each="genre : ${genres}" th:href="@{|/genres/${genre.id}|}" th:text="${genre.genreName}"></a>
+                   </div>
                 </article>
 
             </section>
