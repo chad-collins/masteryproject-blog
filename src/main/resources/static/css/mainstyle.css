@@ -96,7 +96,10 @@ nav{
 /*-------------------
 3. Body / Box Content
 -------------------*/
-
+.column-reverse{
+  display: flex;
+  flex-direction: column-reverse;
+}
 .box{
   margin-top: 0.5rem;
   margin-top: 0.5rem;
