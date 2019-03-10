@@ -50,18 +50,13 @@
         <!--end area for main content-->
 
         <section class="two-column-right">
-            <div class="sidebar">
-                <h2>Tags</h2>
-                <ul>
-                    <li>tag</li>
-                    <li>tag</li>
-                    <li>tag</li>
-                    <li>tag</li>
-                    <li>tag</li>
-                </ul>
-            </div>
-
-        </section>
+                <div class="sidebar">
+                    <a href="/octothorps"><h2>Octothorps</h2></a>
+                    <ul>
+                    <li th:each="octothorp : ${octothorps}"><a th:href="@{|/octothorps/${octothorp.id}|}" th:text="${octothorp.tagName}">Tag</a></li>
+                    </ul>
+                </div>
+            </section>
         </div>
     </main>
 </body>

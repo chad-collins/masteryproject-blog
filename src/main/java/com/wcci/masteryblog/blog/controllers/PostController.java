@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wcci.masteryblog.blog.models.Author;
 import com.wcci.masteryblog.blog.models.Genre;
+import com.wcci.masteryblog.blog.models.Octothorp;
 import com.wcci.masteryblog.blog.models.Post;
 import com.wcci.masteryblog.blog.repositories.AuthorsRepository;
 import com.wcci.masteryblog.blog.repositories.GenreRepository;
+import com.wcci.masteryblog.blog.repositories.OctoRepository;
 import com.wcci.masteryblog.blog.repositories.PostsRepository;
 
 
@@ -27,10 +29,13 @@ public class PostController {
 	AuthorsRepository authorsRepo;
 	@Resource
 	GenreRepository genreRepo;
+	@Resource
+	OctoRepository octoRepo;
 	
 	@GetMapping("")
 	public String home(Model model) {
 		model.addAttribute("posts", postsRepo.findAll());
+		model.addAttribute("octothorps", octoRepo.findAll());
 		return "posts";
 		
 	}
@@ -40,14 +45,16 @@ public class PostController {
 	model.addAttribute(postsRepo.findAll());
 	model.addAttribute("authors", authorsRepo.findAll());
 	model.addAttribute("genres", genreRepo.findAll());
+	model.addAttribute("octothorps", octoRepo.findAll());
 	return"/addpost";
 	}
 	
 	@PostMapping("/addpost")
-	public String addPost(String lastName, String genreName, String postTitle, String postContent) {
+	public String addPost(String lastName, String genreName, String tagName, String postTitle, String postContent) {
 	Genre genre = genreRepo.findByGenreName(genreName);
 	Author author = authorsRepo.findByLastName(lastName);
-	postsRepo.save(new Post(postTitle, author, genre, postContent));
+	Octothorp tag = octoRepo.findByTagName(tagName);
+	postsRepo.save(new Post(postTitle, author, genre, postContent, tag));
 		return"redirect:/";
 	}
 	
@@ -57,6 +64,7 @@ public class PostController {
 	public String viewPost(@PathVariable Long id, Model model) {
 	model.addAttribute("post", postsRepo.findById(id).get());
 	model.addAttribute("authors", authorsRepo.findAll());
+	model.addAttribute("octothorps", octoRepo.findAll());
 	return"singlepost";
 	}
 	
