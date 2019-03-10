@@ -18,7 +18,7 @@ import com.wcci.masteryblog.blog.repositories.PostsRepository;
 
 
 @Controller
-@RequestMapping("/post")
+@RequestMapping("/posts")
 public class PostController {
 
 	@Resource
@@ -27,6 +27,13 @@ public class PostController {
 	AuthorsRepository authorsRepo;
 	@Resource
 	GenreRepository genreRepo;
+	
+	@GetMapping("")
+	public String home(Model model) {
+		model.addAttribute("posts", postsRepo.findAll());
+		return "posts";
+		
+	}
 	
 	@GetMapping("/addpost")
 	public String addPost(Model model) {
