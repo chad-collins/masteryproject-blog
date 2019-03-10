@@ -21,7 +21,8 @@
 
   # [Color codes]
   # Black (Font, Borders, Button BGs) #000;
-  # White (Body BG, Button-Font) #fff; 
+  # White (Body BG, Button-Font) #fff;
+  # Sea Green (Links) #2E8B57; 
 #
 -------------------------------------------------------------------*/
 
@@ -37,7 +38,7 @@
 
 a{
 text-decoration: none;
- color: #000;
+ color: #2E8B57;
 
 }
 
@@ -96,18 +97,34 @@ nav{
 /*-------------------
 3. Body / Box Content
 -------------------*/
+
 .column-reverse{
   display: flex;
   flex-direction: column-reverse;
 }
+
 .box{
   margin-top: 0.5rem;
   margin-top: 0.5rem;
 }
 
+.grid-table{
+  display: flex;                      
+  flex-wrap: wrap;                   
+  justify-content: flex-start;
+  
+}
+
+.grid-table--item{
+  margin-bottom: 3rem;
+  margin-right: 3rem;
+  
+}
+
 .article-header{
   font-size:2.2rem;
 }
+
 .article-list li{
   margin-right: 1rem;
   margin-top: 0.5rem;
