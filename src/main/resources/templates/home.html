@@ -20,6 +20,7 @@
         <nav id="navbar">
             <ul class="row nav-list">
                 <li class="nav-list--item"><a href="/">HOME</a></li>
+                <li class="nav-list--item"><a href="/posts/allposts">ALL POSTS</a></li>
                 <li class="nav-list--item"><a href="/genres">GENRES</a></li>
                 <li class="nav-list--item"><a href="/authors">AUTHORS</a></li>
             </ul>
@@ -36,24 +37,29 @@
                 <div class="maincontent-box">
                     <a href="/post/addpost"><button class="square-button">Add a post</button></a>
                 </div>
-                <article class="maincontent-box" th:each="post : ${posts}">
-                    <h2 class="article-header" th:text="${post.postTitle}"></h2>
-                    <ul class="row article-list">
-                        <li>by: Article Author</li>
-                        <li>published: Article Date</li>
-                    </ul>
-                    <p class="article-summary">Article Summary Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Proin feugiat, massa nec ultrices porttitor, metus tellus euismod magna, eu porttitor ex ipsum
-                        eget diam. Pellentesque posuere rutrum lectus, vitae suscipit purus placerat quis.</p>
-                    <p class="article-genre">Filed under: Genre</p>
-                    <a th:href="@{|/post/${post.id}|}"><button class="square-button">Read More</button></a>
-                </article>
+                <div class="column-reverse">
+                    <article class="maincontent-box" th:each="post : ${posts}">
+                        <h2 class="article-header" th:text="${post.postTitle}"></h2>
+                        <ul class="row article-list">
+                            <li th:each="author :${post.authors}"><a th:href="@{|/authors/${author.id}|}"
+                                    th:text="|${author.firstName} ${author.lastName}|"></a></li>
+                            <li><a th:href="@{|/genres/${post.genre.id}|}" th:text="|${post.genre.genreName}|">Genre
+                                    Link</a></li>
+                            <li th:text="|published: ${post.date}|">Default Date></li>
+
+
+                        </ul>
+                        <p class="article-summary" th:text="${#strings.abbreviate(post.postContent, 500)}">first 500 characters of article.</p>
+                            
+                            <a th:href="@{|/post/${post.id}|}"><button class="square-button">Read More</button></a>
+                        </article>
+            </div>
             </section>
             <!--end area for main content-->
 
             <section class="two-column-right">
                 <div class="sidebar">
-                    <h2>Tags</h2>
+                    <a href="/octothorps"><h2>Octothorps</h2></a>
                     <ul>
                         <li>tag</li>
                         <li>tag</li>

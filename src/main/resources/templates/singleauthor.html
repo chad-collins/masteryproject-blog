@@ -35,13 +35,8 @@
 
                 <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
                 <article class="maincontent-box">
-                    <h2 class="article-header" th:text="${post.postTitle}"></h2>
-                    <ul class="row article-list">
-                        <li>by: Article Author</li>
-                        <li>published: Article Date</li>
-                        <li>Filed under: Genre</li>
-                    </ul>
-                    <p class="article-summary" th:utext="${post.postContent}">
+                    <h2 class="article-header" th:text="|${author.firstName} ${author.lastName}|"></h2>
+
                 </article>
             </section>
             <!--end area for main content-->

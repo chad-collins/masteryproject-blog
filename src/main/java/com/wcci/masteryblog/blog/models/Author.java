@@ -10,8 +10,6 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Author {
 
-	
-	
 	@Id
 	@GeneratedValue
 	private Long id;

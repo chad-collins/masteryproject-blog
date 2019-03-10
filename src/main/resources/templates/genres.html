@@ -21,6 +21,7 @@
         <nav id="navbar">
             <ul class="row nav-list">
                 <li class="nav-list--item"><a href="/">HOME</a></li>
+                <li class="nav-list--item"><a href="/posts/allposts">ALL POSTS</a></li>
                 <li class="nav-list--item"><a href="/genres">GENRES</a></li>
                 <li class="nav-list--item"><a href="/authors">AUTHORS</a></li>
             </ul>
@@ -33,32 +34,34 @@
             <section id="articles" class="two-column-left">
                 <div class="maincontent-box">
                     <p>Add a new genre:</p>
-                    <form class ="box" action="/genres/addgenre" method="POST">
+                    <form class="box" action="/genres/addgenre" method="POST">
                         <input class="form-input--small" type="text" placeholder="Mobile" name="genreName">
                         <button class="square-button" type="submit">Submit</button>
                     </form>
                 </div>
 
-        <article class="maincontent-box" th:each="genre : ${genres}">
-            <h2 th:text="${genre.genreName}"></h2>
-        </article>
+                <article class="maincontent-box">
+                    <div class="grid-table">
+                        <a class="grid-table--item article-header" th:each="genre : ${genres}"
+                            th:href="@{|/genres/${genre.id}|}" th:text="${genre.genreName}"></a>
+                    </div>
+                </article>
 
-        </section>
-        <!--end area for main content-->
+            </section>
+            <!--end area for main content-->
 
-        <section class="two-column-right">
-            <div class="sidebar">
-                <h2>Tags</h2>
-                <ul>
-                    <li>tag</li>
-                    <li>tag</li>
-                    <li>tag</li>
-                    <li>tag</li>
-                    <li>tag</li>
-                </ul>
-            </div>
-
-        </section>
+            <section class="two-column-right">
+                <div class="sidebar">
+                    <a href="/octothorps"><h2>Octothorps</h2></a>
+                    <ul>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                        <li>tag</li>
+                    </ul>
+                </div>
+            </section>
         </div>
     </main>
 </body>
