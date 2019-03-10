@@ -20,7 +20,7 @@
         <nav id="navbar">
             <ul class="row nav-list">
                 <li class="nav-list--item"><a href="/">HOME</a></li>
-                <li class="nav-list--item"><a href="/posts/allposts">ALL POSTS</a></li>
+                <li class="nav-list--item"><a href="/posts">ALL POSTS</a></li>
                 <li class="nav-list--item"><a href="/genres">GENRES</a></li>
                 <li class="nav-list--item"><a href="/authors">AUTHORS</a></li>
             </ul>
@@ -34,10 +34,24 @@
             <section id="articles" class="two-column-left">
 
                 <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
-                <article class="maincontent-box">
+                <div class="maincontent-box">
+                    <p>Author</p>
                     <h2 class="article-header" th:text="|${author.firstName} ${author.lastName}|"></h2>
+                    <div class="column-reverse">
+                        <article class="maincontent-box" th:each="post : ${author.posts}">
+                            <h2 class="article-header" th:text="${post.postTitle}"></h2>
+                            <ul class="row article-list">
+                                <li><a th:href="@{|/genres/${post.genre.id}|}" th:text="|${post.genre.genreName}|">Genre
+                                        Link</a></li>
+                                <li th:text="|published: ${post.date}|">Default Date></li>
+                            </ul>
+                            <p class="article-summary" th:text="${#strings.abbreviate(post.postContent, 500)}">first 500 characters of article.</p>
+                                
+                                <a th:href="@{|/posts/${post.id}|}"><button class="square-button">Read More</button></a>
+                        </article>
+                    </div><!--close reverse column-->
 
-                </article>
+                </div>
             </section>
             <!--end area for main content-->
 

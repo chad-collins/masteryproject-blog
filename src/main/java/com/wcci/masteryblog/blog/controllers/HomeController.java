@@ -7,13 +7,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.wcci.masteryblog.blog.repositories.AuthorsRepository;
+import com.wcci.masteryblog.blog.repositories.GenreRepository;
 import com.wcci.masteryblog.blog.repositories.PostsRepository;
 
 @Controller
 public class HomeController {
 
-@Resource
-PostsRepository postsRepo;
+	@Resource
+	PostsRepository postsRepo;
+	@Resource
+	AuthorsRepository authorsRepo;
+	@Resource
+	GenreRepository genreRepo;
 	
 @GetMapping("/")
 public String home(Model model) {

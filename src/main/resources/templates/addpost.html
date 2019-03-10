@@ -21,7 +21,7 @@
     <nav id="navbar">
         <ul class="row nav-list">
             <li class="nav-list--item"><a href="/">HOME</a></li>
-            <li class="nav-list--item"><a href="/posts/allposts">ALL POSTS</a></li>
+            <li class="nav-list--item"><a href="/posts">ALL POSTS</a></li>
             <li class="nav-list--item"><a href="/genres">GENRES</a></li>
             <li class="nav-list--item"><a href="/authors">AUTHORS</a></li>
         </ul>
@@ -34,13 +34,23 @@
       <section id="articles" class="two-column-left">
 
         <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
-        <form class="maincontent-box" action="/post/addpost" method="POST">
+        <form class="maincontent-box" action="/posts/addpost" method="POST">
 
-          <input class="form-input" type="text" placeholder="Author's Last Name" name="lastName">
-
-          <input class="form-input" type="text" placeholder="Post's Genre" name="genreName">
-
-          <input class="form-input" type="text" placeholder="Title of your post." name="postTitle">
+          <div th:object="${genre}">
+            <select name="genreName">
+                <option value="0">What Genre does this post belong to?</option>
+                <option th:each="genre : ${genres}" th:value="${genre.genreName}" th:text="${genre.genreName}">
+                Genre</option>
+            </select> 
+          </div>
+          <div th:object="${author}">
+            <select name="lastName">
+                <option value="0">Post Author</option>
+                <option th:each="author : ${authors}" th:value="${author.lastName}" th:text="|${author.firstName} ${author.lastName}|">
+                Author</option>
+            </select>
+          </div>
+          <input class="form-input" type="text" placeholder="Title of your post" name="postTitle">
 
           <input class="form-textarea" type="textarea" placeholder="Your article here..." name="postContent">
 
