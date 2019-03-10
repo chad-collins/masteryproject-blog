@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wcci.masteryblog.blog.models.Author;
-import com.wcci.masteryblog.blog.models.Post;
 import com.wcci.masteryblog.blog.repositories.AuthorsRepository;
+import com.wcci.masteryblog.blog.repositories.GenreRepository;
+import com.wcci.masteryblog.blog.repositories.PostsRepository;
 
 @Controller
 @RequestMapping("/authors")
 public class AuthorController {
 
+	@Resource
+	GenreRepository genreRepo;
+	@Resource
+	PostsRepository postsRepo;
 	@Resource
 	AuthorsRepository authorsRepo;
 	
@@ -38,6 +43,7 @@ public class AuthorController {
 	@GetMapping("/{id}")
 	public String viewAuthor(@PathVariable Long id, Model model) {
 	model.addAttribute("author", authorsRepo.findById(id).get());
+	model.addAttribute("posts", postsRepo.findAll());
 	return"singleauthor";
 	}
 }

@@ -16,7 +16,7 @@ public class Author {
 	private String firstName;
 	private String lastName;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy= "authors")
 	private Collection <Post> posts;
 	
 	public Author() {}

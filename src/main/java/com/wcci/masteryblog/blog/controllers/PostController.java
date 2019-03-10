@@ -46,22 +46,6 @@ public class PostController {
 	
 	
 	
-/*	@PostMapping("/submit")
-	public String reviewSubmit(Beer beer, String review, String title, String date, int rating, String type,
-		String beerName, String beerType, String brewery, String imgUrl, String tags) {
-		Category categoryToMake = categories.findByBeerType(beerType);
-		categoryToMake = categories.save(categoryToMake);
-		Beer beerToMake = beers.findByBeerNameAndBrewery(beerName, brewery);
-		if (beerToMake == null) {
-			beerToMake = beers.save(new Beer(beerName, categoryToMake, brewery, imgUrl));
-		}
-		beerToMake = beers.save(beerToMake);
-		reviews.save(new Review(beerToMake, review, title, date, rating));
-		return "redirect:/";
-	}*/
-	
-	
-	
 	@GetMapping("/{id}")
 	public String viewPost(@PathVariable Long id, Model model) {
 	model.addAttribute("post", postsRepo.findById(id).get());

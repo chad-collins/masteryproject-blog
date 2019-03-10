@@ -35,11 +35,12 @@
 
                 <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
                 <article class="maincontent-box">
+                    <p>Post</p>
                     <h2 class="article-header" th:text="${post.postTitle}"></h2>
                     <ul class="row article-list">
-                        <li>by: Article Author</li>
-                        <li>published: Article Date</li>
-                        <li>Filed under: Genre</li>
+                        <li th:each="author :${post.authors}"><a th:href="@{|/authors/${author.id}|}"
+                                th:text="|${author.firstName} ${author.lastName}|"></a></li>
+                        <li th:text="|published: ${post.date}|">Default Date></li>
                     </ul>
                     <p class="article-summary" th:utext="${post.postContent}">
                 </article>
