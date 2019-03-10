@@ -32,34 +32,32 @@
         <div class="two-column">
             <section id="articles" class="two-column-left">
                 <div class="maincontent-box">
-                    <p>Add a new genre:</p>
-                    <form class="box" action="/genres/addgenre" method="POST">
-                        <input class="form-input--small" type="text" placeholder="Mobile" name="genreName">
+                    <p>Add a new Octothorp:</p>
+                    <form class="box" action="/octothorps/addoctothorp" method="POST">
+                        <input class="form-input--small" type="text" placeholder="Tag" name="tagName">
                         <button class="square-button" type="submit">Submit</button>
                     </form>
                 </div>
 
-                <article class="maincontent-box" th:each="genre : ${genres}">
-                    <a th:href="@{|/genres/${genre.id}|}">
-                        <h2 th:text="${genre.genreName}"></h2>
-                    </a>
-                </article>
+                <div class="grid-table">
+                    <a class="grid-table--item article-header" th:each="octothorp : ${octothorps}"
+                        th:href="@{|/octothorps/${octothorp.id}|}" th:text="${octothorp.tagName}"></a>
+                </div>
+
 
             </section>
             <!--end area for main content-->
 
             <section class="two-column-right">
-                <div class="sidebar">
-                    <h2>Tags</h2>
-                    <ul>
-                        <li>tag</li>
-                        <li>tag</li>
-                        <li>tag</li>
-                        <li>tag</li>
-                        <li>tag</li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </main>
-</body>
+                    <div class="sidebar">
+                        <a href="/octothorps"><h2>Octothorps</h2></a>
+                        <ul>
+                        <li th:each="octothorp : ${octothorps}"><a th:href="@{|/octothorps/${octothorp.id}|}" th:text="${octothorp.tagName}">Tag</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </body>
+    
+    </html>
