@@ -11,14 +11,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wcci.masteryblog.blog.models.Genre;
+import com.wcci.masteryblog.blog.repositories.AuthorsRepository;
 import com.wcci.masteryblog.blog.repositories.GenreRepository;
+import com.wcci.masteryblog.blog.repositories.PostsRepository;
 
 @Controller
 @RequestMapping("/genres")
 public class GenreController {
 	
 	@Resource
+	PostsRepository postsRepo;
+	@Resource
+	AuthorsRepository authorsRepo;
+	@Resource
 	GenreRepository genreRepo;
+	
 	
 	@GetMapping("")
 	public String viewAllGenres(Model model) {
@@ -37,6 +44,7 @@ public class GenreController {
 	@GetMapping("/{id}")
 	public String viewGenre(@PathVariable Long id, Model model) {
 	model.addAttribute("genre", genreRepo.findById(id).get());
+	model.addAttribute("posts", postsRepo.findAll());
 	return"singlegenre";
 	}
 }
