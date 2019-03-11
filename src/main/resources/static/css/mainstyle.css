@@ -22,7 +22,7 @@
   # [Color codes]
   # Black (Font, Borders, Button BGs) #000;
   # White (Body BG, Button-Font) #fff;
-  # Sea Green (Links) #2E8B57; 
+  # Sea Green (Links, tag-button BG) #2E8B57; 
 #
 -------------------------------------------------------------------*/
 
@@ -97,6 +97,10 @@ nav{
 /*-------------------
 3. Body / Box Content
 -------------------*/
+.column{
+  display: flex;
+  flex-direction: column;
+}
 
 .column-reverse{
   display: flex;
@@ -120,23 +124,31 @@ nav{
   margin-right: 3rem;
   
 }
+.section-header{
+  size: 2.5rem;
+  margin-bottom: 2rem;
+}
 
 .article-header{
   font-size:2.2rem;
 }
 
-.article-list li{
+.article-list, li{
   margin-right: 1rem;
   margin-top: 0.5rem;
 }
 
 .article-summary{
   margin-bottom: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .article-genre{
   margin-bottom: 1rem;
+}
+
+.justify{
+  text-align: justify;
 }
 
 /* Larger display view is a 2 column grid with main content and a sidebar*/
@@ -148,32 +160,38 @@ nav{
     margin-left: auto;
     margin-right: auto;
     margin-top: 3rem;
+    padding: 1rem;
     max-width: 1200px;
   }
 
   .sidebar{
-    box-shadow: 0 0px 3px rgba(0,0,0, 0.2),0 1px 0 rgba(0,0,0,.01);
     margin-right: 3rem;
     padding: 1rem;
   }
   
   .maincontent-box{
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     margin-left: 3rem;
     max-width: 750px;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #2E8B57;
   } 
+  .maincontent-box:first-child{
+    padding-bottom: 0;
+    border-bottom: 0;
 
 }
 
 /* Smaller display view is a abandons grid view and sidebar*/
 @media(max-width: 750px){
-  .sidebar{
-  display: none;
-  }
+  
+ 
+
   .maincontent-box{   
     margin-left: 1rem;
     margin-right: 1rem;
     margin-bottom: 3rem;
+    padding: 1rem;
   }
 }
 
@@ -195,10 +213,32 @@ nav{
    color:white;
 }
 
+.tag-button {
+  background-color: #2E8B57;
+  border: none;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 6px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
 /*-----------------
 5. Footer
 -----------------*/
-
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #2E8B57;
+  color: white;
+  text-align: center;
+}
 
 
 

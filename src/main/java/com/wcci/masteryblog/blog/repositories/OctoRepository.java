@@ -6,4 +6,6 @@ import com.wcci.masteryblog.blog.models.Octothorp;
 
 public interface OctoRepository extends CrudRepository<Octothorp, Long>{
 
+	Octothorp findByTagName(String tagName);
+
 }

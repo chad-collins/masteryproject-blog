@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/css/mainstyle.css">
     <link rel="stylesheet" type="text/css" href="/css/formstyle.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <title>Document</title>
+    <title>Blog Template</title>
 </head>
 
 <body>
@@ -33,37 +33,49 @@
         <div class="two-column">
             <section id="articles" class="two-column-left">
                 <div class="maincontent-box">
-                    <p>Add a new genre:</p>
-                    <form class="box" action="/genres/addgenre" method="POST">
-                        <input class="form-input--small" type="text" placeholder="Mobile" name="genreName">
-                        <button class="square-button" type="submit">Submit</button>
-                    </form>
-                </div>
 
-                <article class="maincontent-box">
+                    <h2 class="section-header">Take a look at all of our genres.</h2>
                     <div class="grid-table">
                         <a class="grid-table--item article-header" th:each="genre : ${genres}"
                             th:href="@{|/genres/${genre.id}|}" th:text="${genre.genreName}"></a>
                     </div>
-                </article>
+
+                    <form class="box" action="/genres/addgenre" method="POST">
+                        <fieldset>
+                            <legend>Add a new genre:</legend>
+                            <input class="form-input--small" type="text" placeholder="Mobile" name="genreName">
+                            <button class="square-button" type="submit">Submit</button>
+                        </fieldset>
+                    </form>
+                </div>
 
             </section>
             <!--end area for main content-->
 
+
             <section class="two-column-right">
                 <div class="sidebar">
-                    <a href="/octothorps"><h2>Octothorps</h2></a>
-                    <ul>
-                        <li>tag</li>
-                        <li>tag</li>
-                        <li>tag</li>
-                        <li>tag</li>
-                        <li>tag</li>
-                    </ul>
+                    <a href="/octothorps">
+                        <h2>Octothorps</h2>
+                    </a>
+                    <a class="grid-table tag-button" th:each="octothorp : ${octothorps}"
+                        th:href="@{|/octothorps/${octothorp.id}|}" th:text="${octothorp.tagName}">Tag</a>
                 </div>
+                <div class="box">
+                    <h2>About Lorem Ipsum</h2>
+                    <figure><img src="http://placekitten.com/300/200" alt="placeholder image"></figure>
+                    <p class="justify">We are a lorem ipsum company, Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit.
+                        Aenean nec venenatis nibh. Phasellus porta iaculis metus. Suspendisse potenti.
+                        Etiam suscipit aliquam mauris, a aliquet erat lobortis vitae. Sed consectetur, nisi quis iaculis
+                        luctus.
+                    </p>
+                </div>
+
             </section>
         </div>
     </main>
+    <footer>Powered By: COL-MINER &COPY 2019</footer>
 </body>
 
 </html>

@@ -15,7 +15,6 @@ import javax.persistence.ManyToOne;
 
 
 
-
 @Entity
 public class Post {
 
@@ -26,22 +25,24 @@ public class Post {
 	private LocalDateTime date;
 	@Lob
 	private String postContent;
+
+
 	@ManyToMany
 	private Collection<Author> authors;
 	@ManyToMany
-	private Collection<Octothorp> octos;
+	private List<Octothorp> octos;
 	@ManyToOne
 	private Genre genre;
+	
+	public Post() {}
 
-	public Post() {
-	}
-
-	public Post(String postTitle, Author author, Genre genre, String postContent) {
+	public Post(String postTitle, Author author, Genre genre, String postContent, Octothorp octo) {
 		this.postTitle = postTitle;
 		this.postContent = postContent;
+		this.genre = genre;
 		this.date = LocalDateTime.now();
 		this.authors = Arrays.asList(author);
-		this.genre = genre;
+		this.octos = Arrays.asList(octo);
 	}
 
 	public LocalDateTime getDate() {
@@ -63,11 +64,26 @@ public class Post {
 	public Collection<Author> getAuthors() {
 		return authors;
 	}
+	
+	public Collection<Octothorp> getOctos() {
+		return octos;
+	}
 
 	public Genre getGenre() {
 		return genre;
 	}
 	
+	public void addAuthorToPostAuthors(Author authorToFind) {
+		authors.add(authorToFind);
+		
+	}
+	
+	public void addOctoToPostOctos(Octothorp OctoToAdd) {
+		ArrayList<Octothorp> octos = new ArrayList<Octothorp>(this.getOctos());
+		octos.add(OctoToAdd);
+		this.octos = octos;
+		
+	}
 
 	/* because there is a ManyToMany relationship where a Post can have multiple authors,
 	 * this method will print all authors first and last names.
@@ -82,18 +98,10 @@ public class Post {
 		return authorNames;
 	}
 
-	
-
-
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", postTitle=" + postTitle + ", date=" + date + ", postContent=" + postContent
 				+ ", authors=" + getAuthorNames() + ", genre=" + genre + "]";
-	}
-
-	public void addAuthorToPostAuthors(Author authorToFind) {
-		authors.add(authorToFind);
-		
 	}
 
 }
