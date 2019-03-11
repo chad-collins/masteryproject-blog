@@ -22,7 +22,7 @@
   # [Color codes]
   # Black (Font, Borders, Button BGs) #000;
   # White (Body BG, Button-Font) #fff;
-  # Sea Green (Links) #2E8B57; 
+  # Sea Green (Links, tag-button BG) #2E8B57; 
 #
 -------------------------------------------------------------------*/
 
@@ -193,6 +193,19 @@ nav{
 .square-button:hover {
    background-color: #444;
    color:white;
+}
+
+.tag-button {
+  background-color: #2E8B57;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
 }
 
 /*-----------------
