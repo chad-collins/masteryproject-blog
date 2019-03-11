@@ -50,6 +50,14 @@
                 Author</option>
             </select>
           </div>
+          <div th:object="${octothorp}">
+            <select name="tagName">
+                <option value="0">Add an Octothorp</option>
+                <option th:each="octothorp : ${octothorps}" th:value="${octothorp.tagName}" th:text="${octothorp.tagName}">
+                Octothorp</option>
+            </select>
+          </div>
+          
           <input class="form-input" type="text" placeholder="Title of your post" name="postTitle">
 
           <input class="form-textarea" type="textarea" placeholder="Your article here..." name="postContent">
@@ -58,7 +66,6 @@
 
         </form>
       </section>
-      <!--end area for main content-->
 
       <section class="two-column-right">
           <div class="sidebar">

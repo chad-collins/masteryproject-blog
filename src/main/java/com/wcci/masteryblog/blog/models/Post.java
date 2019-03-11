@@ -30,7 +30,7 @@ public class Post {
 	@ManyToMany
 	private Collection<Author> authors;
 	@ManyToMany
-	private Collection<Octothorp> octos;
+	private List<Octothorp> octos;
 	@ManyToOne
 	private Genre genre;
 	
@@ -79,7 +79,9 @@ public class Post {
 	}
 	
 	public void addOctoToPostOctos(Octothorp OctoToAdd) {
+		ArrayList<Octothorp> octos = new ArrayList<Octothorp>(this.getOctos());
 		octos.add(OctoToAdd);
+		this.octos = octos;
 		
 	}
 
@@ -96,13 +98,10 @@ public class Post {
 		return authorNames;
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", postTitle=" + postTitle + ", date=" + date + ", postContent=" + postContent
 				+ ", authors=" + getAuthorNames() + ", genre=" + genre + "]";
 	}
-
 
 }
