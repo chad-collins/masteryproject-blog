@@ -36,7 +36,7 @@ public class Post {
 	
 	public Post() {}
 
-	public Post(String postTitle, Author author, Genre genre, String postContent, Octothorp octo) {
+	public Post(String postTitle, Author author, Genre genre, String postContent, Octothorp ...octo) {
 		this.postTitle = postTitle;
 		this.postContent = postContent;
 		this.genre = genre;
