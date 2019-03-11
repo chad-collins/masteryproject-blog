@@ -46,7 +46,7 @@ public class PostController {
 	model.addAttribute("authors", authorsRepo.findAll());
 	model.addAttribute("genres", genreRepo.findAll());
 	model.addAttribute("octothorps", octoRepo.findAll());
-	return"/addpost";
+	return"addpost";
 	}
 	
 	@PostMapping("/addpost")
@@ -57,7 +57,6 @@ public class PostController {
 	postsRepo.save(new Post(postTitle, author, genre, postContent, tag));
 		return"redirect:/";
 	}
-	
 	
 	
 	@GetMapping("/{id}")
@@ -77,5 +76,7 @@ public class PostController {
 			postsRepo.save(postToAddTo);}
 		return"redirect:/posts/" +id;
 	}
+	
+	
 		
 }
