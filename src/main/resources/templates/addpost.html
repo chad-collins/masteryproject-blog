@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="/css/mainstyle.css">
   <link rel="stylesheet" type="text/css" href="/css/formstyle.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <title>Document</title>
+  <title>Blog Template</title>
 </head>
 
 <body>
@@ -19,12 +19,12 @@
       <h1>LOGO</h1>
     </div>
     <nav id="navbar">
-        <ul class="row nav-list">
-            <li class="nav-list--item"><a href="/">HOME</a></li>
-            <li class="nav-list--item"><a href="/posts">ALL POSTS</a></li>
-            <li class="nav-list--item"><a href="/genres">GENRES</a></li>
-            <li class="nav-list--item"><a href="/authors">AUTHORS</a></li>
-        </ul>
+      <ul class="row nav-list">
+        <li class="nav-list--item"><a href="/">HOME</a></li>
+        <li class="nav-list--item"><a href="/posts">ALL POSTS</a></li>
+        <li class="nav-list--item"><a href="/genres">GENRES</a></li>
+        <li class="nav-list--item"><a href="/authors">AUTHORS</a></li>
+      </ul>
     </nav>
   </header>
 
@@ -35,46 +35,65 @@
 
         <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
         <form class="maincontent-box" action="/posts/addpost" method="POST">
-          <fieldset>
-          <div th:object="${genre}">
-            <select name="genreName">
-                <option value="0">What Genre does this post belong to?</option>
-                <option th:each="genre : ${genres}" th:value="${genre.genreName}" th:text="${genre.genreName}">
-                Genre</option>
-            </select> 
-          </div>
-          <div th:object="${author}">
+          <fieldset th:object="${author}">
+            <legend>Choose a primary author</legend>
             <select name="lastName">
-              <option value="0">Post Author</option>
-              <option th:each="author : ${authors}" th:value="${author.lastName}" th:text="|${author.firstName} ${author.lastName}|">
+              <option value="0">CHOOSE:</option>
+              <option th:each="author : ${authors}" th:value="${author.lastName}"
+                th:text="|${author.firstName} ${author.lastName}|">
                 Author</option>
-              </select>
-            </div>
-            <div th:object="${octothorp}">
-              <select name="tagName">
-                <option value="0">Add an Octothorp</option>
-                <option th:each="octothorp : ${octothorps}" th:value="${octothorp.tagName}" th:text="${octothorp.tagName}">
+            </select>
+          </fieldset>
+          <fieldset th:object="${genre}">
+            <legend>Choose by genre</legend>
+            <select name="genreName">
+              <option value="0">CHOOSE:</option>
+              <option th:each="genre : ${genres}" th:value="${genre.genreName}" th:text="${genre.genreName}">
+                Genre</option>
+            </select>
+          </fieldset>
+          <fieldset th:object="${octothorp}">
+            <legend>Choose a starting tag</legend>
+            <select name="tagName">
+              <option value="0">CHOOSE:</option>
+              <option th:each="octothorp : ${octothorps}" th:value="${octothorp.tagName}"
+                th:text="${octothorp.tagName}">
                 Octothorp</option>
             </select>
-          </div>
-          <input class="form-input" type="text" placeholder="Title of your post" name="postTitle">
-
-          <input class="form-textarea" type="textarea" placeholder="Your article here..." name="postContent">
-
-          <button class="square-button" type="submit">Submit</button>
-        </fieldset>
+          </fieldset>
+          <fieldset class="column">
+            <input class="form-input" type="text" placeholder="Title of your post" name="postTitle">
+            <input class="form-textarea" type="textarea" wrap="hard" placeholder="Your article here..."
+              name="postContent">
+            <button class="square-button" type="submit">Submit</button>
+          </fieldset>
         </form>
       </section>
 
+
       <section class="two-column-right">
-          <div class="sidebar">
-              <a href="/octothorps"><h2>Octothorps</h2></a>
-              <a class="grid-table tag-button" th:each="octothorp : ${octothorps}" th:href="@{|/octothorps/${octothorp.id}|}" th:text="${octothorp.tagName}">Tag</a>
-          </div>
-          </div>
+        <div class="sidebar">
+          <a href="/octothorps">
+            <h2>Octothorps</h2>
+          </a>
+          <a class="grid-table tag-button" th:each="octothorp : ${octothorps}"
+            th:href="@{|/octothorps/${octothorp.id}|}" th:text="${octothorp.tagName}">Tag</a>
+        </div>
+        <div class="box">
+          <h2>About Lorem Ipsum</h2>
+          <figure><img src="http://placekitten.com/300/200" alt="placeholder image"></figure>
+          <p class="justify">We are a lorem ipsum company, Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit.
+            Aenean nec venenatis nibh. Phasellus porta iaculis metus. Suspendisse potenti.
+            Etiam suscipit aliquam mauris, a aliquet erat lobortis vitae. Sed consectetur, nisi quis iaculis
+            luctus.
+          </p>
+        </div>
+
       </section>
-  </div>
-</main>
+    </div>
+  </main>
+  <footer>Powered By: COL-MINER &COPY 2019</footer>
 </body>
 
 </html>
