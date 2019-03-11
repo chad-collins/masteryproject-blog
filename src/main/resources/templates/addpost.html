@@ -35,7 +35,7 @@
 
         <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
         <form class="maincontent-box" action="/posts/addpost" method="POST">
-
+          <fieldset>
           <div th:object="${genre}">
             <select name="genreName">
                 <option value="0">What Genre does this post belong to?</option>
@@ -45,25 +45,24 @@
           </div>
           <div th:object="${author}">
             <select name="lastName">
-                <option value="0">Post Author</option>
-                <option th:each="author : ${authors}" th:value="${author.lastName}" th:text="|${author.firstName} ${author.lastName}|">
+              <option value="0">Post Author</option>
+              <option th:each="author : ${authors}" th:value="${author.lastName}" th:text="|${author.firstName} ${author.lastName}|">
                 Author</option>
-            </select>
-          </div>
-          <div th:object="${octothorp}">
-            <select name="tagName">
+              </select>
+            </div>
+            <div th:object="${octothorp}">
+              <select name="tagName">
                 <option value="0">Add an Octothorp</option>
                 <option th:each="octothorp : ${octothorps}" th:value="${octothorp.tagName}" th:text="${octothorp.tagName}">
                 Octothorp</option>
             </select>
           </div>
-          
           <input class="form-input" type="text" placeholder="Title of your post" name="postTitle">
 
           <input class="form-textarea" type="textarea" placeholder="Your article here..." name="postContent">
 
           <button class="square-button" type="submit">Submit</button>
-
+        </fieldset>
         </form>
       </section>
 
