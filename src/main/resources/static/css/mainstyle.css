@@ -97,6 +97,10 @@ nav{
 /*-------------------
 3. Body / Box Content
 -------------------*/
+.column{
+  display: flex;
+  flex-direction: column;
+}
 
 .column-reverse{
   display: flex;
@@ -120,6 +124,10 @@ nav{
   margin-right: 3rem;
   
 }
+.section-header{
+  size: 2.5rem;
+  margin-bottom: 2rem;
+}
 
 .article-header{
   font-size:2.2rem;
@@ -139,6 +147,10 @@ nav{
   margin-bottom: 1rem;
 }
 
+.justify{
+  text-align: justify;
+}
+
 /* Larger display view is a 2 column grid with main content and a sidebar*/
 @media(min-width: 751px){
   .two-column{
@@ -148,6 +160,7 @@ nav{
     margin-left: auto;
     margin-right: auto;
     margin-top: 3rem;
+    padding: 1rem;
     max-width: 1200px;
   }
 
@@ -171,13 +184,14 @@ nav{
 
 /* Smaller display view is a abandons grid view and sidebar*/
 @media(max-width: 750px){
-  .sidebar{
-  display: none;
-  }
+  
+ 
+
   .maincontent-box{   
     margin-left: 1rem;
     margin-right: 1rem;
     margin-bottom: 3rem;
+    padding: 1rem;
   }
 }
 
@@ -216,7 +230,15 @@ nav{
 /*-----------------
 5. Footer
 -----------------*/
-
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #2E8B57;
+  color: white;
+  text-align: center;
+}
 
 
 
