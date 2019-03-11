@@ -50,10 +50,15 @@ public class PostController {
 
 	@PostMapping("/addpost")
 	public String addPost(String lastName, String genreName, String tagName, String postTitle, String postContent) {
+		String[] tags = tagName.split(",");
 		Genre genre = genreRepo.findByGenreName(genreName);
 		Author author = authorsRepo.findByLastName(lastName);
-		Octothorp tag = octoRepo.findByTagName(tagName);
-		postsRepo.save(new Post(postTitle, author, genre, postContent, tag));
+		Octothorp tag = octoRepo.findByTagName(tags[0]);
+		Post newPost = postsRepo.save(new Post(postTitle, author, genre, postContent, tag));
+		for (int i = 1; i < tags.length; i++) {
+			newPost.addOctoToPostOctos(octoRepo.findByTagName(tags[i]));
+		}
+		postsRepo.save(newPost);
 		return "redirect:/";
 	}
 
