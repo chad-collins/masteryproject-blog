@@ -42,6 +42,15 @@
                             </select>
                     <button class="square-button" type="submit">Submit</button>
                 </form>
+                <form class ="box" th:action="|/posts/${post.id}/addocto|" method="POST">
+                    <div th:object="${octothorp}">
+                            <select name="octoName">
+                                <option value="0">Add an additional contributing author</option>
+                                <option th:each="octothorp : ${octothorps}" th:value="${octothorp.tagName}" th:text="${octothorp.tagName}">
+                                Octothorp</option>
+                            </select>
+                    <button class="square-button" type="submit">Submit</button>
+                </form>
                 <!--Article briefing box. Contains title, author, date, summary, genre, read-more-button-->
                 <article class="maincontent-box">
                     <p>Post</p>

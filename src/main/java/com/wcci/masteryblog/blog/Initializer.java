@@ -110,7 +110,6 @@ public class Initializer implements CommandLineRunner {
 						+ "In vel felis sagittis, malesuada dolor non, dignissim mi. Nulla facilisi. Nullam porta, quam eu accumsan fermentum, massa enim eleifend nunc, ut porta eros lacus id dui. Donec nec leo nec ex aliquet condimentum. Donec euismod purus quis dui euismod vestibulum. Integer vulputate arcu et nisi sodales fringilla at eget urna. Aliquam volutpat augue sapien, et tempus eros pretium eget. Maecenas volutpat, orci quis molestie pulvinar, tellus est elementum leo, vitae condimentum augue ex et nisi.\n"
 						+ "\n"
 						+ "Sed id tincidunt quam, quis venenatis ipsum. Aliquam gravida risus ante, eleifend rhoncus velit mattis quis. Nullam felis orci, vulputate sed sodales sed, accumsan vel ligula. Duis aliquam bibendum orci, auctor finibus neque eleifend at. Morbi viverra rutrum iaculis. Etiam at tortor in neque egestas posuere. Cras id leo augue.", funny));
-	
 		
 	}			
 }

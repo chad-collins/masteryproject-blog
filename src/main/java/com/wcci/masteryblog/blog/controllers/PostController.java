@@ -46,7 +46,7 @@ public class PostController {
 	model.addAttribute("authors", authorsRepo.findAll());
 	model.addAttribute("genres", genreRepo.findAll());
 	model.addAttribute("octothorps", octoRepo.findAll());
-	return"/addpost";
+	return"addpost";
 	}
 	
 	@PostMapping("/addpost")
@@ -57,7 +57,6 @@ public class PostController {
 	postsRepo.save(new Post(postTitle, author, genre, postContent, tag));
 		return"redirect:/";
 	}
-	
 	
 	
 	@GetMapping("/{id}")
@@ -77,5 +76,17 @@ public class PostController {
 			postsRepo.save(postToAddTo);}
 		return"redirect:/posts/" +id;
 	}
+	
+	@PostMapping("/{id}/addocto")
+	public String addAdditionalOctothorp(@PathVariable Long id, String octoName) {
+		Post postToAddTo = postsRepo.findById(id).get();
+		Octothorp octoToFind = octoRepo.findByTagName(octoName);
+		if(!postToAddTo.getOctos().contains(octoToFind)) {
+			postToAddTo.addOctoToPostOctos(octoToFind);
+			postsRepo.save(postToAddTo);
+			}
+		return"redirect:/posts/" +id;
+	}
+		
 		
 }
