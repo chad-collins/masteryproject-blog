@@ -50,7 +50,7 @@ public class GenreTest {
 	public void shouldSavePostoGenresCollectionOfPosts() {
 		Genre genre = genreRepo.save(new Genre("testGenre"));
 		Author author = authorsRepo.save(new Author("name", "name1"));
-		Post post = postsRepo.save(new Post("title", author, genre,"content"));
+		Post post = postsRepo.save(new Post("title", author, genre,"content", null));
 		
 		
 		entityManager.persist(genre);

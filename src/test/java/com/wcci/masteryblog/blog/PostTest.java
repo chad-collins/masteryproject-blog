@@ -27,7 +27,7 @@ public class PostTest {
 	
 	@Test
 	public void shouldSavePostToPosts() {
-		Post post = postRepo.save(new Post("title", null, null, "content"));
+		Post post = postRepo.save(new Post("title", null, null, "content", null));
 		
 		entityManager.persist(post);
 		entityManager.flush();
