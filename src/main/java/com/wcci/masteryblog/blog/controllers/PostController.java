@@ -77,6 +77,16 @@ public class PostController {
 		return"redirect:/posts/" +id;
 	}
 	
-	
+	@PostMapping("/{id}/addocto")
+	public String addAdditionalOctothorp(@PathVariable Long id, String octoName) {
+		Post postToAddTo = postsRepo.findById(id).get();
+		Octothorp octoToFind = octoRepo.findByTagName(octoName);
+		if(!postToAddTo.getOctos().contains(octoToFind)) {
+			postToAddTo.addOctoToPostOctos(octoToFind);
+			postsRepo.save(postToAddTo);
+			}
+		return"redirect:/posts/" +id;
+	}
+		
 		
 }
