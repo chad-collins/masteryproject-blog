@@ -46,9 +46,9 @@
                             <li><a th:href="@{|/genres/${post.genre.id}|}" th:text="|${post.genre.genreName}|">Genre
                                     Link</a></li>
                             <li th:text="|published: ${post.date}|">Default Date></li>
-
-
                         </ul>
+                        <ul class="row article-list"> 
+                                <a class="tag-button" th:each="tag :${post.octos}" th:href="@{|/octothorps/${tag.id}|}" th:text="${tag.tagName}"></a></ul>
                         <p class="article-summary" th:text="${#strings.abbreviate(post.postContent, 500)}">first 500 characters of article.</p>
                             
                             <a th:href="@{|/posts/${post.id}|}"><button class="square-button">Read More</button></a>
@@ -60,9 +60,8 @@
             <section class="two-column-right">
                     <div class="sidebar">
                         <a href="/octothorps"><h2>Octothorps</h2></a>
-                        <ul>
-                        <li th:each="octothorp : ${octothorps}"><a th:href="@{|/octothorps/${octothorp.id}|}" th:text="${octothorp.tagName}">Tag</a></li>
-                        </ul>
+                        <a class="grid-table tag-button" th:each="octothorp : ${octothorps}" th:href="@{|/octothorps/${octothorp.id}|}" th:text="${octothorp.tagName}">Tag</a>
+                    </div>
                     </div>
                 </section>
             </div>

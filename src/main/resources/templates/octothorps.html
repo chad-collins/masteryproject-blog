@@ -51,9 +51,8 @@
             <section class="two-column-right">
                     <div class="sidebar">
                         <a href="/octothorps"><h2>Octothorps</h2></a>
-                        <ul>
-                        <li th:each="octothorp : ${octothorps}"><a th:href="@{|/octothorps/${octothorp.id}|}" th:text="${octothorp.tagName}">Tag</a></li>
-                        </ul>
+                        <a class="grid-table tag-button" th:each="octothorp : ${octothorps}" th:href="@{|/octothorps/${octothorp.id}|}" th:text="${octothorp.tagName}">Tag</a>
+                    </div>
                     </div>
                 </section>
             </div>

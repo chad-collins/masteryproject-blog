@@ -125,14 +125,14 @@ nav{
   font-size:2.2rem;
 }
 
-.article-list li{
+.article-list, li{
   margin-right: 1rem;
   margin-top: 0.5rem;
 }
 
 .article-summary{
   margin-bottom: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .article-genre{
@@ -152,16 +152,20 @@ nav{
   }
 
   .sidebar{
-    box-shadow: 0 0px 3px rgba(0,0,0, 0.2),0 1px 0 rgba(0,0,0,.01);
     margin-right: 3rem;
     padding: 1rem;
   }
   
   .maincontent-box{
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     margin-left: 3rem;
     max-width: 750px;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #2E8B57;
   } 
+  .maincontent-box:first-child{
+    padding-bottom: 0;
+    border-bottom: 0;
 
 }
 
@@ -199,7 +203,8 @@ nav{
   background-color: #2E8B57;
   border: none;
   color: #fff;
-  padding: 10px 20px;
+  font-size: 0.7rem;
+  padding: 6px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
