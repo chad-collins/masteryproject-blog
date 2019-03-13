@@ -50,13 +50,18 @@ public class PostController {
 
 	@PostMapping("/addpost")
 	public String addPost(String lastName, String genreName, String tagName, String postTitle, String postContent) {
+		String[] tags = tagName.split(",");
 		Genre genre = genreRepo.findByGenreName(genreName);
 		Author author = authorsRepo.findByLastName(lastName);
-		Octothorp tag = octoRepo.findByTagName(tagName);
-		postsRepo.save(new Post(postTitle, author, genre, postContent, tag));
+		Octothorp tag = octoRepo.findByTagName(tags[1]);
+		Post newPost = postsRepo.save(new Post(postTitle, author, genre, postContent, tag));
+		for (int i = 1; i < tags.length; i++) {
+			newPost.addOctoToPostOctos(octoRepo.findByTagName(tags[i]));
+		}
+		postsRepo.save(newPost);
 		return "redirect:/";
 	}
-
+	
 	@GetMapping("/{id}")
 	public String viewPost(@PathVariable Long id, Model model) {
 		model.addAttribute("post", postsRepo.findById(id).get());
@@ -99,6 +104,8 @@ public class PostController {
 		}
 		return "redirect:/posts/" + id;
 	}
+	
+	
 
 //		Octothorp octoToFind = octoRepo.findByTagName(octoName);
 //		if(!postToAddTo.getOctos().contains(octoToFind)) {
