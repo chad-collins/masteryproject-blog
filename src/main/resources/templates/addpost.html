@@ -52,15 +52,18 @@
                 Genre</option>
             </select>
           </fieldset>
-          <fieldset th:object="${octothorp}">
+          <fieldset>
+          <input th:each="tag : ${octothorps}" type="checkbox" name="tagName" th:checked="${tag.tagName}" th:value="${tag.tagName}" th:text="${tag.tagName}" />
+        </fieldset>
+          <!-- <fieldset th:object="${octothorp}">
             <legend>Choose a starting tag</legend>
             <select name="tagName">
               <option value="0">CHOOSE:</option>
               <option th:each="octothorp : ${octothorps}" th:value="${octothorp.tagName}"
                 th:text="${octothorp.tagName}">
                 Octothorp</option>
-            </select>
-          </fieldset>
+              </select>
+          </fieldset> -->
           <fieldset class="column">
             <input class="form-input" type="text" placeholder="Title of your post" name="postTitle">
             <input class="form-textarea" type="textarea" wrap="hard" placeholder="Your article here..."
