@@ -30,19 +30,19 @@ public class Post {
 	@ManyToMany
 	private Collection<Author> authors;
 	@ManyToMany
-	private List<Octothorp> octos;
+	private Collection<Octothorp> octos;
 	@ManyToOne
 	private Genre genre;
 	
 	public Post() {}
 
-	public Post(String postTitle, Author author, Genre genre, String postContent, Octothorp octo) {
+	public Post(String postTitle, Author author, Genre genre, String postContent, Octothorp ...octo) {
 		this.postTitle = postTitle;
 		this.postContent = postContent;
 		this.genre = genre;
 		this.date = LocalDateTime.now();
-		this.authors = Arrays.asList(author);
-		this.octos = Arrays.asList(octo);
+		this.authors = new ArrayList<>(Arrays.asList(author));
+		this.octos = new ArrayList<>(Arrays.asList(octo));
 	}
 
 	public LocalDateTime getDate() {
@@ -79,10 +79,7 @@ public class Post {
 	}
 	
 	public void addOctoToPostOctos(Octothorp OctoToAdd) {
-		ArrayList<Octothorp> octos = new ArrayList<Octothorp>(this.getOctos());
 		octos.add(OctoToAdd);
-		this.octos = octos;
-		
 	}
 
 	/* because there is a ManyToMany relationship where a Post can have multiple authors,
